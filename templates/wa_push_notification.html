@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Appunto Web Admin</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename='web/img/logo_appunto.png') }}" rel="icon">
+  <!-- Libraries & Bootstrap CSS File -->
+  <link href="{{ url_for('static', filename='web/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='web/css/style.css') }}" rel="stylesheet">
+</head>
+
+<body>
+  <!--==========================
+  Header
+  ============================-->
+  <header id="header" class="fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="{{ url_for('wa_list_services') }}">Appunto</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('wa_list_services') }}">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('wa_list_sub_services') }}">Sub Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('wa_dashboard') }}">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('wa_list_users') }}">Usuarios</a>
+                    </li>
+                    <li class="nav-item active">
+                      <a class="nav-link" href="{{ url_for('wa_push_notification') }}">Notificaciones</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ url_for('wa_coupon') }}">Cupones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('wa_logout') }}">Salir</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+</header>
+
+  <!-- #header -->
+
+  <!--==========================
+    Section Body
+  ============================-->
+  <section id="intro" class="clearfix">
+    <div class="container">
+
+      <div class="intro-info">
+        <h2>[Notificaciones Push ]</h2>
+      </div>
+
+    </div>
+  </section><!-- #intro -->
+
+  <main id="main">
+
+    <section id="clients" class="">
+
+      <div class="container">
+
+        <div >
+          <form  action="/wa_push_notification" method="POST" enctype="multipart/form-data">
+
+            {% if status == "1" %}  
+            <div class="alert alert-success" role="alert">
+              Se envión la notifiación de manera exitosa.
+            </div>
+            {% endif %}
+            <div class="form-group">
+              <label for="iSlDestino">Destino:</label>
+              <select class="custom-select" id="iSlDestino" name="iSlDestino" required>
+                  <option value="0" selected>Todos</option>
+                  <option value="1">Clientes</option>
+                  <option value="2">Usuarios</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="idTxtMensaje">Mensaje:</label>
+              <textarea class="form-control" id="idTxtMensaje" name="idTxtMensaje" placeholder="Mensaje de notifiación push" rows="3" maxlength="125" required></textarea>
+              <small id="userlHelp" class="form-text text-muted">Cantidad máxima de caractertes 125</small>
+            </div>
+            <div>
+              <input  class="btn btn-primary"  type="submit" value="Enviar Notificaciones">         
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>Soporte</h4>
+            <p>
+              <strong>Celular:</strong> 955274509<br>
+              <strong>Email:</strong> pierjv1@gmail.com<br>
+              <strong>Appunto-JPV-Google Cloud Platform</strong> 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- #footer -->
+
+
+  <!-- JavaScript Libraries -->
+  <script src="{{ url_for('static', filename='web/lib/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='web/lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='web/js/main.js') }}"></script>
+
+</body>
+</html>
