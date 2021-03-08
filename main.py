@@ -29,8 +29,8 @@ from src.controllers.cryptoController import AESCipher
 app = Flask(__name__)
 app.secret_key = "any random string"
 app.config['JWT_SECRET_KEY'] = 'cambiar_no_olvidar' 
-app.config["IMAGE_UPLOADS"] = "./static/"
-#app.config["IMAGE_UPLOADS"] = "/tmp"
+#app.config["IMAGE_UPLOADS"] = "./static/"
+app.config["IMAGE_UPLOADS"] = "/tmp"
 jwt = JWTManager(app)
 
 @jwt.expired_token_loader
