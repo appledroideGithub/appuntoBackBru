@@ -48,7 +48,7 @@ def my_expired_token_callback(expired_token):
 def get_token():
     _entity = tokenEntity()
     if _entity.validate_request(request):
-        _expires = timedelta.Timedelta(weeks=1)
+        _expires = timedelta.Timedelta(weeks=53)
         _token = create_access_token(_entity.user, expires_delta=_expires)
         _ret = {'access_token': _token}
         return jsonify(_ret), 200
